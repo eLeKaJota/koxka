@@ -1,8 +1,10 @@
 import pygame
+from settings import *
 
 class Spritesheet:
     def __init__(self, filename):
         self.filename = filename
+        self.number_of_frames = 0
         self.sprite_sheet = pygame.image.load(filename).convert()
 
     def get_sprite(self, x, y, width, height):
@@ -24,3 +26,14 @@ class Spritesheet:
                     y = row * height
                     return self.get_sprite(x, y, width, height)
                 sprite_number += 1
+
+    def get_animation(self, direction, number_of_frames, width, height, scale_width, scale_height):
+        self.number_of_frames = number_of_frames
+        animation_list = []
+        for frame in range(number_of_frames):
+            sprite_tmp = self.parse_sprite(frame, width, height)
+            sprite_tmp_scaled = pygame.transform.scale(sprite_tmp, (scale_width, scale_height))
+            if direction == 'left':
+                sprite_tmp_scaled = pygame.transform.flip(sprite_tmp_scaled, True, False)
+            animation_list.append(sprite_tmp_scaled)
+        return animation_list

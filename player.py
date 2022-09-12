@@ -1,126 +1,32 @@
 from gui import *
+from spritesheet import *
 
-player_idle = [
-            pygame.image.load('assets/player/cat_idle_0.png'),
-            pygame.image.load('assets/player/cat_idle_1.png'),
-            pygame.image.load('assets/player/cat_idle_2.png'),
-            pygame.image.load('assets/player/cat_idle_3.png'),
-        ]
 
-player_idle_big = [
-            pygame.transform.scale(player_idle[0], (64, 64)),
-            pygame.transform.scale(player_idle[1], (64, 64)),
-            pygame.transform.scale(player_idle[2], (64, 64)),
-            pygame.transform.scale(player_idle[3], (64, 64)),
-        ]
+player_idle = Spritesheet('./assets/sprites/cat03_spritesheets/cat03_idle_strip8.png')
+player_idle_left = player_idle.get_animation('left', 8, 40, 32, SCALE, SCALE)
+player_idle_right = player_idle.get_animation('right', 8, 40, 32, SCALE, SCALE)
 
-player_idle_left = [
-            pygame.transform.flip(player_idle[0], True, False),
-            pygame.transform.flip(player_idle[1], True, False),
-            pygame.transform.flip(player_idle[2], True, False),
-            pygame.transform.flip(player_idle[3], True, False),
-        ]
+player_jump = Spritesheet('./assets/sprites/cat03_spritesheets/cat03_jump_strip4.png')
+player_jump_left = player_jump.get_animation('left', 4, 40, 32, SCALE, SCALE)
+player_jump_right = player_jump.get_animation('right', 4, 40, 32, SCALE, SCALE)
 
-player_idle_left_big = [
-            pygame.transform.scale(player_idle_left[0], (64, 64)),
-            pygame.transform.scale(player_idle_left[1], (64, 64)),
-            pygame.transform.scale(player_idle_left[2], (64, 64)),
-            pygame.transform.scale(player_idle_left[3], (64, 64)),
-        ]
+player_fall = Spritesheet('./assets/sprites/cat03_spritesheets/cat03_fall_strip3.png')
+player_fall_left = player_fall.get_animation('left', 3, 40, 32, SCALE, SCALE)
+player_fall_right = player_fall.get_animation('right', 3, 40, 32, SCALE, SCALE)
 
-player_jump = [
-            pygame.image.load('assets/player/cat_jump_0.png'),
-            pygame.image.load('assets/player/cat_jump_1.png'),
-            pygame.image.load('assets/player/cat_jump_2.png'),
-            pygame.image.load('assets/player/cat_jump_3.png'),
-            pygame.image.load('assets/player/cat_jump_4.png'),
-            pygame.image.load('assets/player/cat_jump_5.png'),
-            pygame.image.load('assets/player/cat_jump_6.png'),
-        ]
-
-player_jump_big = [
-            pygame.transform.scale(player_jump[0], (64, 64)),
-            pygame.transform.scale(player_jump[1], (64, 64)),
-            pygame.transform.scale(player_jump[2], (64, 64)),
-            pygame.transform.scale(player_jump[3], (64, 64)),
-            pygame.transform.scale(player_jump[4], (64, 64)),
-            pygame.transform.scale(player_jump[5], (64, 64)),
-            pygame.transform.scale(player_jump[6], (64, 64)),
-        ]
-
-player_jump_left = [
-            pygame.transform.flip(player_jump[0], True, False),
-            pygame.transform.flip(player_jump[1], True, False),
-            pygame.transform.flip(player_jump[2], True, False),
-            pygame.transform.flip(player_jump[3], True, False),
-            pygame.transform.flip(player_jump[4], True, False),
-            pygame.transform.flip(player_jump[5], True, False),
-            pygame.transform.flip(player_jump[6], True, False),
-        ]
-
-player_jump_left_big = [
-            pygame.transform.scale(player_jump_left[0], (64, 64)),
-            pygame.transform.scale(player_jump_left[1], (64, 64)),
-            pygame.transform.scale(player_jump_left[2], (64, 64)),
-            pygame.transform.scale(player_jump_left[3], (64, 64)),
-            pygame.transform.scale(player_jump_left[4], (64, 64)),
-            pygame.transform.scale(player_jump_left[5], (64, 64)),
-            pygame.transform.scale(player_jump_left[6], (64, 64)),
-        ]
-
-player_run = [
-            pygame.image.load('assets/player/cat_run_0.png'),
-            pygame.image.load('assets/player/cat_run_1.png'),
-            pygame.image.load('assets/player/cat_run_2.png'),
-            pygame.image.load('assets/player/cat_run_3.png'),
-            pygame.image.load('assets/player/cat_run_4.png'),
-            pygame.image.load('assets/player/cat_run_5.png'),
-            pygame.image.load('assets/player/cat_run_6.png'),
-            pygame.image.load('assets/player/cat_run_7.png'),
-        ]
-
-player_run_big = [
-            pygame.transform.scale(player_run[0], (64, 64)),
-            pygame.transform.scale(player_run[1], (64, 64)),
-            pygame.transform.scale(player_run[2], (64, 64)),
-            pygame.transform.scale(player_run[3], (64, 64)),
-            pygame.transform.scale(player_run[4], (64, 64)),
-            pygame.transform.scale(player_run[5], (64, 64)),
-            pygame.transform.scale(player_run[6], (64, 64)),
-            pygame.transform.scale(player_run[7], (64, 64)),
-        ]
-
-player_run_left = [
-            pygame.transform.flip(player_run[0], True, False),
-            pygame.transform.flip(player_run[1], True, False),
-            pygame.transform.flip(player_run[2], True, False),
-            pygame.transform.flip(player_run[3], True, False),
-            pygame.transform.flip(player_run[4], True, False),
-            pygame.transform.flip(player_run[5], True, False),
-            pygame.transform.flip(player_run[6], True, False),
-            pygame.transform.flip(player_run[7], True, False),
-        ]
-
-player_run_left_big = [
-            pygame.transform.scale(player_run_left[0], (64, 64)),
-            pygame.transform.scale(player_run_left[1], (64, 64)),
-            pygame.transform.scale(player_run_left[2], (64, 64)),
-            pygame.transform.scale(player_run_left[3], (64, 64)),
-            pygame.transform.scale(player_run_left[4], (64, 64)),
-            pygame.transform.scale(player_run_left[5], (64, 64)),
-            pygame.transform.scale(player_run_left[6], (64, 64)),
-            pygame.transform.scale(player_run_left[7], (64, 64)),
-        ]
+player_run = Spritesheet('./assets/sprites/cat03_spritesheets/cat03_run_strip4.png')
+player_run_right = player_run.get_animation('right', 4, 40, 32, SCALE, SCALE)
+player_run_left = player_run.get_animation('left', 4, 40, 32, SCALE, SCALE)
 
 player_climb = pygame.image.load('assets/player/cat_climb_1.png')
-player_climb_big = pygame.transform.scale(player_climb, (64, 64))
+player_climb_big = pygame.transform.scale(player_climb, (SCALE, SCALE))
 player_climb_left_big = pygame.transform.flip(player_climb_big, True, False)
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, level):
         pygame.sprite.Sprite.__init__(self)
-        self.image = player_idle_big[0]
+        self.image = player_idle_right[0]
         self.rect = self.image.get_rect()
         self.level = level
         self.hitbox = pygame.Rect(self.rect.x + 17, self.rect.y + 11, 29, 32)
@@ -240,31 +146,49 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction = "LEFT"
         if self.jumping == False and self.running == True:
-            if self.move_frame >= len(player_run) * 2:
+            if self.move_frame >= len(player_run_right) * 2:
                 self.move_frame = 0
             if self.vel.x > 0:
-                self.image = player_run_big[self.move_frame // 2]
+                self.image = player_run_right[self.move_frame // 2]
             else:
-                self.image = player_run_left_big[self.move_frame // 2]
+                self.image = player_run_left[self.move_frame // 2]
             self.move_frame += 1
 
         elif self.jumping:
-            if self.move_frame >= len(player_idle) * 8:
-                self.move_frame = len(player_idle) * 8
-            if self.direction == "RIGHT":
-                self.image = player_jump_big[self.move_frame // 8]
+            if self.vel.y < 0:
+                if self.move_frame >= len(player_jump_right) * 4:
+                    self.move_frame = len(player_jump_right) * 3
+                if self.direction == "RIGHT":
+                    self.image = player_jump_right[self.move_frame // 4]
+                else:
+                    self.image = player_jump_left[self.move_frame // 4]
+                self.move_frame += 1
             else:
-                self.image = player_jump_left_big[self.move_frame // 8]
-            self.move_frame += 1
+                if self.move_frame >= len(player_fall_right) * 4:
+                    self.move_frame = len(player_fall_right) * 3
+                if self.direction == "RIGHT":
+                    self.image = player_fall_right[self.move_frame // 4]
+                else:
+                    self.image = player_fall_left[self.move_frame // 4]
+                self.move_frame += 1
 
         if abs(self.vel.x) < 0.2 and self.move_frame != 0 and self.jumping == False:
-            if self.move_frame >= len(player_idle) * 4:
-                self.move_frame = 0
-            if self.direction == "RIGHT":
-                self.image = player_idle_big[self.move_frame // 4]
+            if self.vel.y < 0:
+                if self.move_frame >= len(player_fall_right) * 4:
+                    self.move_frame = len(player_fall_right) * 3
+                if self.direction == "RIGHT":
+                    self.image = player_fall_right[self.move_frame // 4]
+                else:
+                    self.image = player_fall_left[self.move_frame // 4]
+                self.move_frame += 1
             else:
-                self.image = player_idle_left_big[self.move_frame // 4]
-            self.move_frame += 1
+                if self.move_frame >= len(player_idle_right) * 4:
+                    self.move_frame = 0
+                if self.direction == "RIGHT":
+                    self.image = player_idle_right[self.move_frame // 4]
+                else:
+                    self.image = player_idle_left[self.move_frame // 4]
+                self.move_frame += 1
         if self.level.coins_collected == self.level.coins:
             label_completed.show()
             print("You win!")

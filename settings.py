@@ -6,8 +6,9 @@ import pygame_gui
 vec = pygame.math.Vector2
 
 # Window dimensions
-WIDTH = 1200
-HEIGHT = 900
+WIDTH = 1000
+HEIGHT = 800
+SCALE = 80
 
 # FPS
 FPS = 30

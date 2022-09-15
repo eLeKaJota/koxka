@@ -4,8 +4,9 @@ from sprites import *
 VirtualWindow = pygame.Surface.get_rect(screen)
 
 class Camera:
-    def __init__(self, player, map_size):
+    def __init__(self, player, map_size, enemy):
         self.player = player
+        self.enemy = enemy
         self.map_size = map_size
         self.method = None
 
@@ -42,6 +43,6 @@ class Camera:
                 # pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(a.hitbox.x-VirtualWindow.x,a.hitbox.y-VirtualWindow.y,a.hitbox.width,a.hitbox.height), 2)
 
         screen.blit(self.player.image, [(self.player.rect.x - VirtualWindow.x), (self.player.rect.y - VirtualWindow.y)])
-
+        screen.blit(self.enemy.image, [(self.player.rect.x - 45 -VirtualWindow.x), (self.player.rect.y - VirtualWindow.y)])
         # Player hitbox
         # pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(self.player.hitbox.x-VirtualWindow.x,self.player.hitbox.y-VirtualWindow.y,self.player.hitbox.width,self.player.hitbox.height), 2)

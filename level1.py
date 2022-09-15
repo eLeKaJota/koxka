@@ -1,3 +1,4 @@
+from friend import Friend
 from player import *
 from spritesheet import *
 from tiles import *
@@ -15,5 +16,8 @@ MapSize = pygame.Rect(0, 0, level1.map_width, level1.map_height)
 # Player
 player = Player(level1)
 
+# Enemy
+friend = Friend(level1)
+
 # Camera
-camera = Camera(player, MapSize)
+camera = Camera(player, MapSize, friend)

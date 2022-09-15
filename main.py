@@ -24,6 +24,9 @@ while True:
     # Update player
     player.move()
     player.update(screen)
+    
+    friend.move(player)
+    friend.update(screen)
 
     # Update camera
     camera.update()
